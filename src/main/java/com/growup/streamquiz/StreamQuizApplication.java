@@ -1,6 +1,6 @@
 package com.growup.streamquiz;
 
-import com.growup.streamquiz.quiz2.Quiz2;
+import com.growup.streamquiz.quiz.Quiz2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

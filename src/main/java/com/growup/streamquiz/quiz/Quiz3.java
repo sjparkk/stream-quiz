@@ -1,4 +1,4 @@
-package com.growup.streamquiz.quiz2;
+package com.growup.streamquiz.quiz;
 
 import java.util.Arrays;
 import java.util.Comparator;
