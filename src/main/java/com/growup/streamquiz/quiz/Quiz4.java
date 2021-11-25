@@ -62,5 +62,18 @@ public class Quiz4 {
         transactionList.stream().map(Transaction::getValue).forEach(System.out::println);
     }
 
+    //quiz2 : 거래 내역이 있는 거래자가 근무하는 모든 도시를 중복 없이 나열하라. -> 정답 : Seoul , Gyeonggi, Incheon
+    //filter / map(데이터변환) / distinct(중복제거)
+    public static void quiz2() {
+        init();
+
+        List<String> collect = transactions.stream()
+                .filter(v -> v.getValue() != 0)
+                .map(c -> c.getTrader().getCity())
+                .distinct()
+                .collect(Collectors.toList());
+
+        collect.forEach(System.out::println);
+    }
 
 }
