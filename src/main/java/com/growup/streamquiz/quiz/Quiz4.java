@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Quiz4 {
 
@@ -45,6 +47,19 @@ public class Quiz4 {
                 new Transaction(ming, 2020, 7100),
                 new Transaction(hyuk, 2019, 5900),
                 new Transaction(hwan, 2020, 4900));
+    }
+
+    //quiz1 : 2020년에 일어난 모든 거래 내역을 찾아 거래값을 기준으로 오름차순 정렬하라. -> 정답 : 4900, 7100, 12000, 40000
+    //filter / sorted
+    public static void quiz1() {
+        init();
+
+        List<Transaction> transactionList = transactions.stream()
+                .filter(y -> y.getYear() == 2020)
+                .sorted(Comparator.comparing(Transaction::getValue))
+                .collect(Collectors.toList());
+
+        transactionList.stream().map(Transaction::getValue).forEach(System.out::println);
     }
 
 
