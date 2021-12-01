@@ -8,6 +8,7 @@ import lombok.Setter;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class Quiz4 {
@@ -74,6 +75,44 @@ public class Quiz4 {
                 .collect(Collectors.toList());
 
         collect.forEach(System.out::println);
+    }
+
+    //quiz3 : [ 문제 4.3  서울에서 근무하는 모든 거래자를 찾아서 이름순서대로 정렬하라.
+    public static void quiz3() {
+        init();
+
+        List<String> collect = transactions.stream()
+                .filter(v -> v.getTrader().getCity().equals("Seoul"))
+                .map(c -> c.getTrader().getName())
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+
+        collect.forEach(System.out::println);
+    }
+
+    //quiz4 : [ 문제 4.4 ] 모든 거래자의 이름을 순서대로 정렬하라.
+    public static void quiz4() {
+        init();
+
+        List<String> collect = transactions.stream()
+                .map(c -> c.getTrader().getName())
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+
+        collect.forEach(System.out::println);
+    }
+
+    //quiz5 : 부산에 있는 거래자가 있는지 확인하라.
+    public static void quiz5() {
+        init();
+
+        Boolean isExist = transactions.stream()
+                .map(c -> c.getTrader().getCity())
+                .anyMatch(c -> c.equals("Busan"));
+
+        System.out.println(isExist);
     }
 
 }
