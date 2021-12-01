@@ -5,6 +5,8 @@ import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Quiz5 {
 
@@ -55,6 +57,17 @@ public class Quiz5 {
         //        while ( lotto.size() < 6) {
         //            lotto.add((int) ((Math.random() * 45) + 1));
         //        }
+    }
+
+    // 4번 : 두 개의 주사위를 굴려서 나온 눈의 합이 6인 경우를 모두 출력하시오.
+    public static void quiz4() {
+        Stream<Integer> dies = IntStream.rangeClosed(1, 6).boxed();
+
+        List<Integer[]> collect = dies.flatMap(i -> IntStream.rangeClosed(1, 6).boxed().map(j -> new Integer[]{i, j}))
+                .filter(x -> x[0] + x[1] == 6).collect(Collectors.toList());
+
+        collect.forEach( x -> System.out.printf("%d + %d = %d, ", x[0], x[1], x[0]+x[1]));
+
     }
 
 
