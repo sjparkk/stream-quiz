@@ -18,4 +18,17 @@ public class Quiz5 {
 
     }
 
+    // 2번 :문자열 배열 String[] strArr = {"aaa","bb","c","dddd"}의 문자열 중에서 가장 긴 것의 길이를 출력하시오.
+    public static void quiz2() {
+
+        String[] strArr = {"aaa","bb","c","dddd"};
+
+        int maxLength = Arrays.stream(strArr)
+                .mapToInt(String::length)
+                .max()
+                .orElseThrow(NoSuchFieldError::new);
+        System.out.println(maxLength);
+
+    }
+
 }
