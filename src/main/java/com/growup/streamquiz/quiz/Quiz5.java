@@ -2,6 +2,8 @@ package com.growup.streamquiz.quiz;
 
 import java.util.Arrays;
 import java.util.IntSummaryStatistics;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Quiz5 {
@@ -30,5 +32,30 @@ public class Quiz5 {
         System.out.println(maxLength);
 
     }
+
+    // 3번 : 임의의 로또번호(1~45)를 정렬해서 출력하시오. (총 6개의 숫자라고 가정)
+    public static void quiz3() {
+        List<Integer> lottoNum = getLottoNum();
+
+        List<Integer> collect = lottoNum.stream()
+                .sorted()
+                .collect(Collectors.toList());
+
+        collect.forEach(System.out::println);
+    }
+
+    private static List<Integer> getLottoNum() {
+        return new Random().ints(1, 46)
+                .distinct()
+                .limit(6)
+                .boxed()
+                .collect(Collectors.toList());
+        //        일반적인 방법
+        //        Set<Integer> lotto = new HashSet<>();
+        //        while ( lotto.size() < 6) {
+        //            lotto.add((int) ((Math.random() * 45) + 1));
+        //        }
+    }
+
 
 }
