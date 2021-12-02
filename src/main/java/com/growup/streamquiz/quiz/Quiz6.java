@@ -4,6 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class Quiz6 {
 
     private static Student[] studentArr;
@@ -48,5 +52,16 @@ public class Quiz6 {
                 new Student("황지미", false, 2, 3, 100),
                 new Student("강지미", false, 2, 3, 150),
                 new Student("이자바", true, 2, 3, 200) };
+    }
+
+    //문제 1 : stuArr에서 불합격(150점 미만)한 학생들을 구별하여라.
+    public static void quiz1() {
+        initData();
+
+        List<String> stuList = Stream.of(studentArr)
+                .filter(s -> s.getScore() < 150)
+                .map(s -> s.getHak() + "학년 " + s.getBan() + "반 " + s.getName())
+                .collect(Collectors.toList());
+        stuList.forEach(System.out::println);
     }
 }
