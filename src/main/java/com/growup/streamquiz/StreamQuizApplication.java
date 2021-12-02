@@ -13,7 +13,7 @@ public class StreamQuizApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StreamQuizApplication.class, args);
 
-		Quiz6.quiz1();
+		Quiz6.quiz2();
 	}
 
 }

@@ -4,9 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.summingInt;
 
 public class Quiz6 {
 
@@ -56,12 +62,24 @@ public class Quiz6 {
 
     //문제 1 : stuArr에서 불합격(150점 미만)한 학생들을 구별하여라.
     public static void quiz1() {
-        initData();
+//        initData();
 
         List<String> stuList = Stream.of(studentArr)
                 .filter(s -> s.getScore() < 150)
                 .map(s -> s.getHak() + "학년 " + s.getBan() + "반 " + s.getName())
                 .collect(Collectors.toList());
         stuList.forEach(System.out::println);
+    }
+
+    //2번 : 각 반별 총점을 학년 별로 나누어 구하여라 (Map<Integer, Map<Integer, Integer>>)
+    // 그룹핑을 위한 groupingBy / 총합을 위한 summingInt
+    public static void quiz2() {
+        initData();
+
+        Map<Integer, Map<Integer, Integer>> map;
+        map = Stream.of(studentArr)
+                .collect(groupingBy(Student::getHak, groupingBy(Student::getBan, summingInt(Student::getScore))));
+
+        System.out.println(map);
     }
 }
